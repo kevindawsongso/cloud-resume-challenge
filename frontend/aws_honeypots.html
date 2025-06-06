@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kevin Dawson | AWS Honeypots Project</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            // Define a light monochromatic palette with a subtle accent
+            'light-bg-start': '#f0f2f5', // Light grey-blue for gradient start
+            'light-bg-end': '#e6e9ed', // Slightly darker grey-blue for gradient end
+            'light-card': '#ffffff', // White for cards
+            'light-border': '#e0e0e0', // Light grey border
+            'light-text-dark': '#333333', // Dark text for contrast
+            'light-text-medium': '#555555', // Medium grey for secondary text
+            'light-text-light': '#888888', // Light grey for subtle text
+            'light-accent': '#4a90e2', // A professional blue accent
+            'light-hover': '#f0f0f0', // Light grey for hover states
+            'light-shadow': 'rgba(0,0,0,0.1)', // Light shadow
+          },
+        },
+      },
+    };
+    // Ensure the HTML element always has 'light' class
+    document.addEventListener('DOMContentLoaded', () => {
+      document.documentElement.classList.add('light');
+      document.documentElement.classList.remove('dark'); // Remove dark class if present
+    });
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <style>
+    body {
+      background: linear-gradient(to bottom right, var(--tw-colors-light-bg-start), var(--tw-colors-light-bg-end));
+    }
+    /* Additional styles for prose can be added if needed */
+    .prose {
+        color: var(--tw-colors-light-text-medium); /* Ensuring prose text color matches the theme */
+    }
+    .prose h1, .prose h2, .prose h3, .prose h4, .prose strong {
+        color: var(--tw-colors-light-text-dark); /* Darker text for headings and strong elements */
+    }
+    .prose a {
+        color: var(--tw-colors-light-accent); /* Accent color for links */
+    }
+    .prose a:hover {
+        text-decoration: underline;
+    }
+    .prose ul > li::before { /* Styling for list bullets */
+        background-color: var(--tw-colors-light-text-medium);
+    }
+  </style>
+</head>
+
+<body class="font-sans text-light-text-dark min-h-screen flex flex-col">
+  <header class="flex justify-between items-center p-4 md:p-6 bg-light-card shadow-sm">
+    <a href="index.html" class="text-light-text-dark hover:text-light-accent font-semibold text-lg md:text-xl">Home</a>
+    <a href="portfolio.html" class="text-light-text-dark hover:text-light-accent font-semibold text-lg md:text-xl">Portfolio</a>
+  </header>
+
+  <main class="flex-1 p-8 md:p-12">
+    <div class="flex justify-between items-center mb-8">
+      <a href="portfolio.html" class="text-light-accent hover:underline">
+        <i class="fas fa-arrow-left mr-2"></i>Back to Portfolio
+      </a>
+    </div>
+
+    <article class="bg-light-card shadow-xl rounded-xl p-6 md:p-8">
+      <header class="mb-8">
+        <h1 class="text-3xl md:text-4xl font-bold text-light-accent mb-4 flex items-center">
+          <i class="fab fa-aws mr-3"></i>Deploying Honeypots on AWS
+        </h1>
+        <p class="text-sm text-light-text-medium">Project Write-up: Gathering Threat Intelligence with Cloud-Based Deception</p>
+      </header>
+
+      <section class="mb-8 prose max-w-none">
+        <h2 class="text-2xl font-semibold mb-3">Project Goal</h2>
+        <p>
+          The primary objective of this project was to design, deploy, and manage a scalable honeypot infrastructure on Amazon Web Services (AWS). The goal was to actively gather threat intelligence on common attack vectors, tools, and attacker methodologies by exposing intentionally vulnerable services in a controlled cloud environment. This hands-on lab aimed to provide practical experience in cloud security, deception technology, and threat analysis, including investigation of security events using native AWS tools.
+        </p>
+      </section>
+
+      <section class="mb-8 prose max-w-none">
+        <h2 class="text-2xl font-semibold mb-3">Technologies Used</h2>
+        <ul class="list-disc pl-5">
+          <li><strong class="text-light-accent">AWS Services:</strong>
+            <ul class="list-circle pl-5 mt-1">
+              <li><strong>EC2 (Elastic Compute Cloud):</strong> For hosting the honeypot instances (Linux-based).</li>
+              <li><strong>VPC (Virtual Private Cloud):</strong> To create an isolated network environment for the honeypots.</li>
+              <li><strong>Security Groups & NACLs:</strong> For fine-grained control of inbound and outbound traffic to the honeypots.</li>
+              <li><strong>S3 (Simple Storage Service):</strong> For storing collected logs and attacker data.</li>
+              <li><strong>CloudWatch Logs:</strong> For centralized logging and monitoring of honeypot activity and system logs.</li>
+              <li><strong>IAM (Identity and Access Management):</strong> To securely manage access to AWS resources.</li>
+              <li><strong>AWS Detective:</strong> For analyzing, investigating, and visualizing security findings and suspicious activities.</li>
+            </ul>
+          </li>
+          <li><strong class="text-light-accent">Honeypot Software:</strong>
+            <ul class="list-circle pl-5 mt-1">
+              <li><strong>T-Pot Honeypot Platform:</strong> An all-in-one, dockerized honeypot solution. T-Pot integrates multiple honeypot daemons and tools, including but not limited to:
+                <ul class="list-disc pl-5 mt-1">
+                    <li>Cowrie (SSH/Telnet)</li>
+                    <li>Elasticpot (ElasticSearch)</li>
+                    <li>Honeytrap (Various TCP/UDP services)</li>
+                    <li>And others, providing a broad spectrum of emulated services.</li>
+                </ul>
+                Find more about T-Pot CE on <a href="https://github.com/telekom-security/tpotce" target="_blank" class="text-light-accent hover:underline">GitHub</a>.
+              </li>
+            </ul>
+          </li>
+          <li><strong class="text-light-accent">Infrastructure Configuration:</strong>
+            <ul class="list-circle pl-5 mt-1">
+              <li>AWS Management Console / AWS CLI: For manual provisioning and configuration of AWS resources.</li>
+            </ul>
+          </li>
+          <li><strong class="text-light-accent">Log Analysis & Visualization:</strong>
+            <ul class="list-circle pl-5 mt-1">
+                <li><strong>T-Pot's built-in ELK Stack (Elasticsearch, Logstash, Kibana) and Cockpit interface:</strong> For ingesting, analyzing, visualizing honeypot logs, and system monitoring.</li>
+                <li><strong>AWS Detective:</strong> For deeper investigation and correlation of security events identified by the honeypot and other AWS logs (e.g., VPC Flow Logs, CloudTrail).</li>
+                <li>Alternatively, logs could be exported to an external SIEM like Splunk.</li>
+            </ul>
+          </li>
+          <li><strong class="text-light-accent">Operating System:</strong> Debian (as required by T-Pot) or Ubuntu Server LTS for EC2 instances, with T-Pot deployed via Docker.</li>
+        </ul>
+      </section>
+
+      <section class="mb-8 prose max-w-none">
+        <h2 class="text-2xl font-semibold mb-3">Problem Solved</h2>
+        <p>
+          Understanding the evolving threat landscape requires proactive measures. This project addressed the need for practical, hands-on experience in:
+        </p>
+        <ul class="list-disc pl-5">
+          <li>Observing real-world attack patterns against a diverse set of emulated services.</li>
+          <li>Collecting indicators of compromise (IOCs) such as malicious IP addresses, malware samples, and attack payloads.</li>
+          <li>Learning how attackers discover and attempt to exploit vulnerabilities.</li>
+          <li>Gaining insights into attacker TTPs (Tactics, Techniques, and Procedures).</li>
+          <li>Providing an early warning system for new or trending threats through a comprehensive honeypot deployment and subsequent investigation of findings.</li>
+        </ul>
+      </section>
+
+      <section class="mb-8 prose max-w-none">
+        <h2 class="text-2xl font-semibold mb-3">Solution Overview</h2>
+        <p>
+          The T-Pot honeypot infrastructure was deployed on an EC2 instance within a dedicated AWS VPC, segmented from other resources. Key steps included:
+        </p>
+        <ol class="list-decimal pl-5">
+          <li><strong>Infrastructure Provisioning:</strong> Used the AWS Management Console or AWS CLI to define and deploy the EC2 instance, VPC, subnets, security groups (configured to expose T-Pot's various honeypot ports), and S3 buckets for potential log backups. Enabled data sources for AWS Detective, such as CloudTrail and VPC Flow Logs.</li>
+          <li><strong>T-Pot Installation & Configuration:</strong> Installed T-Pot on the EC2 instance following the official documentation. This involved ensuring Docker and other prerequisites were met. T-Pot's standard installation script handles the deployment of its various honeypot containers.</li>
+          <li><strong>Logging and Monitoring:</strong>
+            <ul class="list-circle pl-5 mt-1">
+              <li>T-Pot centralizes logs from all its honeypot services into its integrated ELK stack.</li>
+              <li>The Cockpit interface provides real-time monitoring and system health.</li>
+              <li>AWS service logs (CloudTrail, VPC Flow Logs) and honeypot logs (potentially forwarded to CloudWatch) were made available as data sources for AWS Detective.</li>
+            </ul>
+          </li>
+          <li><strong>Data Analysis & Investigation:</strong>
+            <ul class="list-circle pl-5 mt-1">
+                <li>Regularly reviewed collected data via T-Pot's Kibana dashboards to identify initial attack vectors, sources, and patterns.</li>
+                <li>Utilized AWS Detective to perform deeper investigations into suspicious activities flagged by the honeypot or observed in AWS logs. Detective helped visualize resource interactions, identify root causes, and understand the scope of potential security events.</li>
+            </ul>
+          </li>
+          <li><strong>Security Considerations:</strong> Ensured the EC2 instance hosting T-Pot was sufficiently isolated. Implemented minimal necessary permissions using IAM roles. Regularly updated the underlying OS and T-Pot itself.</li>
+        </ol>
+      </section>
+
+      <section class="mb-8 prose max-w-none">
+        <h2 class="text-2xl font-semibold mb-3">Outcomes & Learnings</h2>
+        <ul class="list-disc pl-5">
+          <li><strong>Practical Experience with AWS & T-Pot:</strong> Gained significant hands-on experience with core AWS services and deploying a comprehensive honeypot solution like T-Pot.</li>
+          <li><strong>Rich Threat Intelligence Gathering:</strong> Successfully collected diverse data on automated scanning activities, brute-force attempts, malware propagation, and exploit attempts against multiple services.</li>
+          <li><strong>Understanding Attacker Behavior:</strong> Observed a wide range of TTPs due to T-Pot's multi-honeypot nature.</li>
+          <li><strong>Manual Cloud Configuration Proficiency:</strong> Developed skills in configuring AWS resources directly via the console or CLI.</li>
+          <li><strong>Advanced Log Analysis & Investigation Skills:</strong> Enhanced abilities in parsing, analyzing, and visualizing complex security logs using T-Pot's integrated Kibana and performing deeper investigations with AWS Detective.</li>
+          <li><strong>Experience with AWS Detective:</strong> Gained practical experience using AWS Detective to analyze security findings, visualize resource relationships, and expedite security investigations.</li>
+          <li><strong>Challenges in Honeypot Management:</strong> Learned about managing a multi-faceted honeypot system, including resource allocation, understanding the data from different honeypots, and distinguishing signal from noise.</li>
+          <li><strong>Importance of System Hardening & Updates:</strong> Reinforced the need to keep the host OS and the honeypot platform itself updated to prevent the honeypot from becoming an actual liability.</li>
+        </ul>
+      </section>
+      </article>
+  </main>
+
+  <footer class="flex justify-center p-6 md:p-8 text-light-text-light text-xs">
+    <p>&copy; 2025 Kevin Dawson. All rights reserved.</p>
+  </footer>
+</body>
+
+</html>
