@@ -10,7 +10,6 @@ Resources:
   VisitorCounterTable:
     Type: AWS::Serverless::SimpleTable
     Properties:
-      TableName: visitor-counter
       PrimaryKey:
         Name: ItemID
         Type: String
@@ -25,10 +24,10 @@ Resources:
         - x86_64
       Environment:
         Variables:
-          DYNAMODB_TABLE_NAME: !Ref visitor-counter
+          DYNAMODB_TABLE_NAME: !Ref VisitorCounterTable
       Policies:
         - DynamoDBCrudPolicy:
-            TableName: !Ref visitor-counter
+            TableName: !Ref VisitorCounterTable
       Events:
         VisitorCountApi:
           Type: Api
