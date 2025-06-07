@@ -34,18 +34,12 @@ Resources:
           Properties:
             Path: /visitors
             Method: GET
-
-  ApiGateway:
-    Type: AWS::Serverless::Api
-    Properties:
-      Name: CloudResumeVisitorApi
-      StageName: Prod
-      Cors:
-        AllowMethods: "'GET,OPTIONS'"
-        AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
-        AllowOrigin: "'*'"
+            Cors:
+              AllowMethods: "'GET,OPTIONS'"
+              AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+              AllowOrigin: "'*'"
 
 Outputs:
   VisitorApiEndpoint:
     Description: "API Gateway endpoint URL for Visitor Counter"
-    Value: !Sub "https://${ApiGateway}.execute-api.${AWS::Region}.amazonaws.com/Prod/visitors"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/visitors"
