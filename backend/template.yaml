@@ -25,10 +25,10 @@ Resources:
         - x86_64
       Environment:
         Variables:
-          DYNAMODB_TABLE_NAME: !Ref VisitorCounterTable
+          DYNAMODB_TABLE_NAME: !Ref visitor-counter
       Policies:
         - DynamoDBCrudPolicy:
-            TableName: !Ref VisitorCounterTable
+            TableName: !Ref visitor-counter
       Events:
         VisitorCountApi:
           Type: Api
