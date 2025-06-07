@@ -40,3 +40,5 @@ Outputs:
   VisitorApiEndpoint:
     Description: "API Gateway endpoint URL for Visitor Counter"
     Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/visitors"
+
+
