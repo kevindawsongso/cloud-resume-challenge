@@ -17,14 +17,14 @@ jobs:
       - name: gsocyberadmin
         uses: aws-actions/configure-aws-credentials@v2
         with:
-          aws-access-key-id: ${{ AKIARVHTFHAPJ5KHKHYC }}
-          aws-secret-access-key: ${{ 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 }}
+          aws-access-key-id: ${{AKIARVHTFHAPJ5KHKHYC}}
+          aws-secret-access-key: ${{qsDSSqlezS44mlt8WI8zs+kp9QulTuzOCkQP07UU}}
           aws-region: us-east-1 # Change to your AWS region
 
       - name: Deploy static site to S3 bucket
-        run: aws s3 sync . s3://YOUR_S3_BUCKET_NAME --delete
+        run: aws s3 sync . s3://kevindawson-resume-bucket --delete
         # Replace YOUR_S3_BUCKET_NAME with the name of your S3 bucket
 
       - name: Invalidate CloudFront distribution
-        run: aws cloudfront create-invalidation --distribution-id YOUR_CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
+        run: aws cloudfront create-invalidation --distribution-id E573PZRZEVQBP --paths "/*"
         # Replace YOUR_CLOUDFRONT_DISTRIBUTION_ID with your CloudFront ID

@@ -1,7 +1,6 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
-Description: >
-  Cloud Resume Challenge Backend Stack
+Description: Cloud Resume Challenge Backend Stack
 
 Globals:
   Function:
@@ -15,7 +14,6 @@ Resources:
       PrimaryKey:
         Name: ItemID
         Type: String
-      BillingMode: PAY_PER_REQUEST
 
   VisitorCounterFunction:
     Type: AWS::Serverless::Function
@@ -37,11 +35,6 @@ Resources:
           Properties:
             Path: /visitors
             Method: GET
-            RestApiId: !Ref ApiGateway
-            Cors:
-              AllowMethods: "'GET,OPTIONS'"
-              AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
-              AllowOrigin: "'*'"
 
   ApiGateway:
     Type: AWS::Serverless::Api
