@@ -5,53 +5,55 @@ Description: >
 
 Globals:
   Function:
-    Timeout: 10 # Default timeout for all functions
+    Timeout: 10
 
 Resources:
-  # The DynamoDB table for storing the visitor count
   VisitorCounterTable:
     Type: AWS::Serverless::SimpleTable
     Properties:
-      TableName: visitor-counter # As per your previous setup
+      TableName: visitor-counter
       PrimaryKey:
         Name: ItemID
         Type: String
-      ProvisionedThroughput:
-        ReadCapacityUnits: 1 # Ignored for PAY_PER_REQUEST, but good practice to define
-        WriteCapacityUnits: 1
       BillingMode: PAY_PER_REQUEST
 
-  # The Lambda function that handles the visitor count logic
   VisitorCounterFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: lambda-functions/ # Points to the folder with your Python code
-      Handler: visitor_counter_lambda.lambda_handler # The file and function name
+      CodeUri: src/
+      Handler: visitor_counter_lambda.lambda_handler
       Runtime: python3.9
       Architectures:
         - x86_64
       Environment:
         Variables:
-          DYNAMODB_TABLE_NAME: !Ref VisitorCounterTable # Pass table name to Lambda
+          DYNAMODB_TABLE_NAME: !Ref VisitorCounterTable
       Policies:
-        # Give the Lambda function read/write permissions to our DynamoDB table
         - DynamoDBCrudPolicy:
             TableName: !Ref VisitorCounterTable
       Events:
-        # Defines the API Gateway trigger for this function
         VisitorCountApi:
           Type: Api
           Properties:
-            Path: /visitors # The path for your API endpoint
+            Path: /visitors
             Method: GET
-            # CORS configuration for the API Gateway
+            RestApiId: !Ref ApiGateway
             Cors:
               AllowMethods: "'GET,OPTIONS'"
               AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
-              AllowOrigin: "'*'" # IMPORTANT: For production, replace '*' with your actual website domain
+              AllowOrigin: "'*'"
+
+  ApiGateway:
+    Type: AWS::Serverless::Api
+    Properties:
+      Name: CloudResumeVisitorApi
+      StageName: Prod
+      Cors:
+        AllowMethods: "'GET,OPTIONS'"
+        AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+        AllowOrigin: "'*'"
 
 Outputs:
-  # Output the API endpoint URL after deployment
   VisitorApiEndpoint:
     Description: "API Gateway endpoint URL for Visitor Counter"
-    Value: !Sub "https://d123.execute-api.${AWS::Region}.amazonaws.com/visitors"
+    Value: !Sub "https://${ApiGateway}.execute-api.${AWS::Region}.amazonaws.com/Prod/visitors"
