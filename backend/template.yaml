@@ -25,7 +25,7 @@ Resources:
   VisitorCounterFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: src/ # Points to the folder with your Python code
+      CodeUri: lambda-functions/ # Points to the folder with your Python code
       Handler: visitor_counter_lambda.lambda_handler # The file and function name
       Runtime: python3.9
       Architectures:
