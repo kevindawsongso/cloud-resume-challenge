@@ -34,10 +34,7 @@ Resources:
           Properties:
             Path: /visitors
             Method: GET
-            Cors:
-              AllowMethods: "'GET,OPTIONS'"
-              AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
-              AllowOrigin: "'*'"
+            RestApiId: !Ref ServerlessRestApi
 
 Outputs:
   VisitorApiEndpoint:
