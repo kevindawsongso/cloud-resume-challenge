@@ -24,8 +24,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install AWS SAM CLI
-        run: |
-          pip install aws-sam-cli
+        run: pip install aws-sam-cli
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -35,11 +34,12 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Build and Deploy SAM app
+        working-directory: backend
         run: |
-          cd backend
           sam build
           sam deploy \
             --stack-name cloud-resume-backend \
             --resolve-s3 \
             --capabilities CAPABILITY_IAM \
-            --no-fail-on-empty-changeset
+            --no-fail-on-empty-changeset \
+            --region ${{ secrets.AWS_REGION }}
