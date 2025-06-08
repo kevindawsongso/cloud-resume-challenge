@@ -19,7 +19,7 @@ Resources:
     Properties:
       CodeUri: src/
       Handler: visitor_counter_lambda.lambda_handler
-      Runtime: python3.9
+      Runtime: python3.11
       Architectures:
         - x86_64
       Environment:
