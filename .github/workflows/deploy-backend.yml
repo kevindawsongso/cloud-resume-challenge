@@ -42,5 +42,5 @@ jobs:
             --resolve-s3 \
             --capabilities CAPABILITY_IAM \
             --no-fail-on-empty-changeset \
+            --no-confirm-changeset \
             --region ${{ secrets.AWS_REGION }}
-  					--no-confirm-changeset
