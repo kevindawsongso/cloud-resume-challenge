@@ -17,7 +17,7 @@ Resources:
   VisitorCounterFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: src/
+      CodeUri: lambda-functions/
       Handler: visitor_counter_lambda.lambda_handler
       Runtime: python3.11
       Architectures:
