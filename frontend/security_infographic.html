@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Security Home Lab Findings: An Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#001219] text-gray-200">
+
+    <!-- Color Palette: Brilliant Blues (#005f73, #0a9396, #94d2bd, #e9d8a6, #ee9b00, #ca6702, #bb3e03, #ae2012, #9b2226) -->
+    <!-- Narrative Plan: A Week in the Life of a Cloud Honeypot: Analyzing Real-World Attack Patterns in a Home Lab. -->
+    <!-- Visualization Plan: -->
+    <!-- Data: Total Findings -> Goal: Inform -> Viz: Big Number -> Method: HTML/CSS. NO SVG. -->
+    <!-- Data: Attacker Countries -> Goal: Compare -> Viz: Bar Chart -> Method: Chart.js/Canvas. NO SVG. -->
+    <!-- Data: Top Probed Ports -> Goal: Compare -> Viz: Donut Chart -> Method: Chart.js/Canvas. NO SVG. -->
+    <!-- Data: EC2 Traffic -> Goal: Compare -> Viz: Stacked Bar Chart -> Method: Chart.js/Canvas. NO SVG. -->
+    <!-- Data: Attack Lifecycle -> Goal: Organize -> Viz: Flow Chart -> Method: HTML/CSS with Tailwind. NO SVG/Mermaid JS. -->
+    <!-- Data: Key Takeaways -> Goal: Organize -> Viz: Numbered List -> Method: HTML/CSS with Tailwind. NO SVG. -->
+    <!-- Confirmation: NEITHER Mermaid JS NOR SVG were used in this output. All visuals are rendered using Chart.js/Canvas or styled HTML. -->
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-[#94d2bd] mb-2">Cloud Honeypot Analysis</h1>
+            <p class="text-lg text-gray-300">Visualizing Real-World Attack Patterns from a Home Lab Environment</p>
+        </header>
+
+        <section id="kpis" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 text-center">
+            <div class="bg-[#005f73] p-6 rounded-lg shadow-xl">
+                <p class="text-2xl font-bold text-[#e9d8a6]">Total GuardDuty Findings</p>
+                <p class="text-5xl font-extrabold text-white">412</p>
+                <p class="text-sm text-gray-300">Unique security events detected</p>
+            </div>
+            <div class="bg-[#005f73] p-6 rounded-lg shadow-xl">
+                <p class="text-2xl font-bold text-[#e9d8a6]">Most Probed Service</p>
+                <p class="text-5xl font-extrabold text-white">RDP (3389)</p>
+                <p class="text-sm text-gray-300">Remote Desktop Protocol</p>
+            </div>
+            <div class="bg-[#005f73] p-6 rounded-lg shadow-xl">
+                <p class="text-2xl font-bold text-[#e9d8a6]">Top Attacker Origin</p>
+                <p class="text-5xl font-extrabold text-white">Netherlands</p>
+                <p class="text-sm text-gray-300">Based on IP address geolocation</p>
+            </div>
+        </section>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <div class="bg-[#003049] p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold text-center mb-4 text-[#94d2bd]">Global Threat Landscape: Top Attacker Countries</h2>
+                <p class="text-center text-gray-400 mb-4">The analysis of source IP addresses from GuardDuty findings reveals a geographically diverse and automated threat landscape. These attacks are not targeted but are part of broad, internet-wide scanning campaigns looking for any vulnerable machine.</p>
+                <div class="chart-container">
+                    <canvas id="attackerCountriesChart"></canvas>
+                </div>
+            </div>
+
+            <div class="bg-[#003049] p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold text-center mb-4 text-[#94d2bd]">Attacker's Playbook: Most Probed Ports</h2>
+                <p class="text-center text-gray-400 mb-4">Attackers overwhelmingly target a small set of well-known ports associated with remote access and database services. This highlights a focus on finding systems with weak credentials or unpatched vulnerabilities in common services.</p>
+                <div class="chart-container">
+                    <canvas id="probedPortsChart"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-[#003049] p-6 rounded-lg shadow-lg mb-12">
+            <h2 class="text-2xl font-bold text-center mb-6 text-[#94d2bd]">High-Value Targets: EC2 Instance Traffic Analysis</h2>
+            <p class="text-center text-gray-400 mb-6">Network traffic volume correlates strongly with malicious activity. The primary honeypot instance (`i-0057...`) absorbed over 222 MB of traffic, the vast majority being inbound scans and connection attempts. This demonstrates the sheer volume of unsolicited traffic a public-facing instance can attract.</p>
+            <div class="chart-container mx-auto" style="height: 450px; max-height: 500px;">
+                <canvas id="ec2TrafficChart"></canvas>
+            </div>
+        </div>
+        
+        <div class="bg-[#003049] p-8 rounded-lg shadow-lg mb-12">
+            <h2 class="text-2xl font-bold text-center mb-8 text-[#94d2bd]">Anatomy of Threat Detection & Response</h2>
+            <p class="text-center text-gray-400 mb-8">The home lab's layered security monitoring provides a comprehensive view of an attack. Each tool plays a critical role, from initial detection to detailed interaction analysis, demonstrating a defense-in-depth strategy for visibility.</p>
+            <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-4">
+                <div class="text-center p-4 bg-[#0a9396] rounded-lg w-full md:w-auto">
+                    <p class="font-bold text-white">1. External Scan</p>
+                    <p class="text-sm text-gray-200">Attacker IP scans public IP space</p>
+                </div>
+                <div class="text-2xl font-bold text-[#ee9b00] hidden md:block">&rarr;</div>
+                <div class="text-2xl font-bold text-[#ee9b00] md:hidden">&darr;</div>
+                <div class="text-center p-4 bg-[#94d2bd] rounded-lg w-full md:w-auto">
+                    <p class="font-bold text-[#001219]">2. GuardDuty Alert</p>
+                    <p class="text-sm text-gray-800">Detects malicious IP & port probe</p>
+                </div>
+                <div class="text-2xl font-bold text-[#ee9b00] hidden md:block">&rarr;</div>
+                <div class="text-2xl font-bold text-[#ee9b00] md:hidden">&darr;</div>
+                 <div class="text-center p-4 bg-[#e9d8a6] rounded-lg w-full md:w-auto">
+                    <p class="font-bold text-[#001219]">3. VPC Flow Log</p>
+                    <p class="text-sm text-gray-800">Records ACCEPT/REJECT network action</p>
+                </div>
+                <div class="text-2xl font-bold text-[#ee9b00] hidden md:block">&rarr;</div>
+                <div class="text-2xl font-bold text-[#ee9b00] md:hidden">&darr;</div>
+                <div class="text-center p-4 bg-[#ee9b00] rounded-lg w-full md:w-auto">
+                    <p class="font-bold text-white">4. Honeypot Log</p>
+                    <p class="text-sm text-gray-200">Captures detailed protocol interaction</p>
+                </div>
+            </div>
+        </div>
+
+        <section id="takeaways">
+            <h2 class="text-3xl font-bold text-center mb-8 text-[#94d2bd]">10 Key Takeaways, Mitigations, and Lessons Learned</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                <div class="bg-[#005f73] p-6 rounded-lg shadow-lg flex items-start">
+                    <div class="text-2xl mr-4 text-[#ee9b00]">🔬</div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-2 text-white">1. Attacks are Automated & Opportunistic</h3>
+                        <p class="text-gray-300">The wide range of source IPs and the focus on common ports (RDP, SSH, Telnet) indicate automated scanners, not targeted attacks. They relentlessly search the entire internet for low-hanging fruit.</p>
+                    </div>
+                </div>
+
+                <div class="bg-[#005f73] p-6 rounded-lg shadow-lg flex items-start">
+                     <div class="text-2xl mr-4 text-[#ae2012]">🛡️</div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-2 text-white">2. Mitigation: Principle of Least Privilege</h3>
+                        <p class="text-gray-300">Never expose management ports like RDP or SSH to the public internet (0.0.0.0/0). Use bastion hosts, VPNs, or cloud-native connection tools (like AWS SSM Session Manager) instead.</p>
+                    </div>
+                </div>
+
+                <div class="bg-[#005f73] p-6 rounded-lg shadow-lg flex items-start">
+                    <div class="text-2xl mr-4 text-[#ee9b00]">🔬</div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-2 text-white">3. Remote Desktop is a Prime Target</h3>
+                        <p class="text-gray-300">Port 3389 (RDP) was the most-probed service by a large margin. This is a common entry point for ransomware attacks, making its protection absolutely critical.</p>
+                    </div>
+                </div>
+
+                <div class="bg-[#005f73] p-6 rounded-lg shadow-lg flex items-start">
+                     <div class="text-2xl mr-4 text-[#ae2012]">🛡️</div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-2 text-white">4. Mitigation: Use Security Groups as a Firewall</h3>
+                        <p class="text-gray-300">The high number of 'REJECT' actions in VPC Flow Logs confirms that security groups are working. Regularly audit them to ensure only necessary traffic from specific, trusted IPs is allowed.</p>
+                    </div>
+                </div>
+
+                <div class="bg-[#005f73] p-6 rounded-lg shadow-lg flex items-start">
+                    <div class="text-2xl mr-4 text-[#9b2226]">🎓</div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-2 text-white">5. Lesson: Default Configurations are Insecure</h3>
+                        <p class="text-gray-300">The honeypot's success relies on mimicking a default or poorly configured server. This experiment proves that deploying any service without immediate hardening invites compromise.</p>
+                    </div>
+                </div>
+                
+                 <div class="bg-[#005f73] p-6 rounded-lg shadow-lg flex items-start">
+                    <div class="text-2xl mr-4 text-[#ee9b00]">🔬</div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-2 text-white">6. Attackers Originate Globally</h3>
+                        <p class="text-gray-300">While the Netherlands was the top source, significant activity came from the US, Germany, and others. This diversity makes IP-based blocking a challenging and often ineffective primary defense strategy.</p>
+                    </div>
+                </div>
+
+                <div class="bg-[#005f73] p-6 rounded-lg shadow-lg flex items-start">
+                    <div class="text-2xl mr-4 text-[#ae2012]">🛡️</div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-2 text-white">7. Mitigation: Leverage Threat Intelligence</h3>
+                        <p class="text-gray-300">GuardDuty automatically uses threat intelligence lists (like ProofPoint) to identify known malicious hosts. Consider integrating other threat feeds into your firewall or WAF rules for proactive blocking.</p>
+                    </div>
+                </div>
+
+                <div class="bg-[#005f73] p-6 rounded-lg shadow-lg flex items-start">
+                     <div class="text-2xl mr-4 text-[#9b2226]">🎓</div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-2 text-white">8. Lesson: Visibility is Key</h3>
+                        <p class="text-gray-300">The combination of GuardDuty (alerts), VPC Flow Logs (network metadata), and Dionaea logs (application-level detail) provides a powerful, multi-layered view of security events. You can't protect what you can't see.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-[#005f73] p-6 rounded-lg shadow-lg flex items-start">
+                    <div class="text-2xl mr-4 text-[#ee9b00]">🔬</div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-2 text-white">9. Legacy Protocols are Still Scanned</h3>
+                        <p class="text-gray-300">The presence of Telnet (port 23) and SMB probes shows that attackers still check for old, insecure services, likely hoping to find them on misconfigured or forgotten legacy devices connected to the network.</p>
+                    </div>
+                </div>
+
+                <div class="bg-[#005f73] p-6 rounded-lg shadow-lg flex items-start">
+                    <div class="text-2xl mr-4 text-[#9b2226]">🎓</div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-2 text-white">10. Lesson: Honeypots are Invaluable Learning Tools</h3>
+                        <p class="text-gray-300">This home lab project provides more realistic insights into attacker TTPs (Tactics, Techniques, and Procedures) than any textbook. It's a practical, effective way to build real-world cybersecurity skills.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        function wrapLabel(label) {
+            const maxLength = 16;
+            if (typeof label !== 'string' || label.length <= maxLength) {
+                return label;
+            }
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + ' ' + word).trim().length > maxLength) {
+                    if (currentLine.length > 0) {
+                        lines.push(currentLine);
+                    }
+                    currentLine = word;
+                } else {
+                    currentLine = (currentLine + ' ' + word).trim();
+                }
+            }
+            if (currentLine.length > 0) {
+                lines.push(currentLine);
+            }
+            return lines;
+        }
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            } else {
+                return label;
+            }
+        };
+
+        const chartDefaultOptions = {
+            maintainAspectRatio: false,
+            responsive: true,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#e9d8a6'
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: { color: '#94d2bd' },
+                    grid: { color: 'rgba(148, 210, 189, 0.2)' }
+                },
+                x: {
+                    ticks: { color: '#94d2bd' },
+                    grid: { color: 'rgba(148, 210, 189, 0.2)' }
+                }
+            }
+        };
+
+        const doughnutChartOptions = {
+             maintainAspectRatio: false,
+             responsive: true,
+             plugins: {
+                legend: {
+                    position: 'top',
+                    labels: {
+                        color: '#e9d8a6'
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    }
+                }
+             }
+        };
+
+        
+        const attackerCountriesData = {
+            labels: ['Netherlands', 'United States', 'Germany', 'France', 'Russia', 'Ireland'],
+            datasets: [{
+                label: 'Number of GuardDuty Findings',
+                data: [138, 85, 52, 41, 35, 22],
+                backgroundColor: ['#0a9396', '#94d2bd', '#e9d8a6', '#ee9b00', '#ca6702', '#bb3e03'],
+                borderColor: '#003049',
+                borderWidth: 2
+            }]
+        };
+
+        new Chart(document.getElementById('attackerCountriesChart'), {
+            type: 'bar',
+            data: attackerCountriesData,
+            options: chartDefaultOptions
+        });
+
+        
+        const probedPortsData = {
+            labels: ['RDP (3389)', 'SSH (22)', 'Telnet (23)', 'SMB (445)', 'HTTP (80)', 'Other'],
+            datasets: [{
+                label: 'Port Probes',
+                data: [215, 88, 45, 31, 20, 13],
+                backgroundColor: ['#ae2012', '#bb3e03', '#ca6702', '#ee9b00', '#e9d8a6', '#94d2bd'],
+                hoverOffset: 4
+            }]
+        };
+
+        new Chart(document.getElementById('probedPortsChart'), {
+            type: 'doughnut',
+            data: probedPortsData,
+            options: doughnutChartOptions
+        });
+        
+        const ec2TrafficData = {
+            labels: [wrapLabel('i-0057c987d2417fa90 (Honeypot)'), wrapLabel('i-0d194872a0018d508'), wrapLabel('i-00ee5563fca03a30f'), wrapLabel('i-0c9d2624de0e7125c')],
+            datasets: [{
+                label: 'Bytes In (MB)',
+                data: [182.96, 76.66, 45.96, 22.29],
+                backgroundColor: '#ca6702',
+            }, {
+                label: 'Bytes Out (MB)',
+                data: [39.99, 0.55, 0.84, 11.98],
+                backgroundColor: '#0a9396',
+            }]
+        };
+        
+        new Chart(document.getElementById('ec2TrafficChart'), {
+            type: 'bar',
+            data: ec2TrafficData,
+            options: {
+                ...chartDefaultOptions,
+                indexAxis: 'y',
+                scales: {
+                    x: {
+                        stacked: true,
+                        ticks: { color: '#94d2bd' },
+                        grid: { color: 'rgba(148, 210, 189, 0.2)' },
+                        title: {
+                            display: true,
+                            text: 'Traffic Volume (MB)',
+                            color: '#e9d8a6'
+                        }
+                    },
+                    y: {
+                        stacked: true,
+                        ticks: { color: '#94d2bd' },
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>
