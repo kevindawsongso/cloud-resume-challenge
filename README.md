@@ -2,7 +2,7 @@
 
 Welcome! This is my completed version of the [Cloud Resume Challenge](https://cloudresumechallenge.dev/), a hands-on cloud engineering project designed to showcase real-world skills across web development, serverless infrastructure, CI/CD automation, and cloud security.
 
-This repository contains the full source code and automation behind my live resume website, deployed entirely on AWS with modern DevSecOps practices.
+This repository contains the full source code and automation behind my live resume website, deployed entirely on AWS with CI/CD and modern DevSecOps practices.
 
 ---
 
