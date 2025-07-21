@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kevin Dawson – Home &amp; Resume</title>
+  <title>Kevin Dawson – Home & Resume</title>
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -106,7 +106,104 @@
         id="resume-content"
         class="bg-light-card shadow-xl rounded-xl p-6 text-xs text-light-text-medium leading-relaxed"
       >
-        <!-- (Resume content unchanged) -->
+        <h2
+          class="text-xl font-bold text-light-text-dark mb-4 border-b-2 border-light-border pb-2"
+        >
+          My Resume
+        </h2>
+
+        <!-- Professional Summary -->
+        <div class="space-y-2 mb-6">
+          <h3 class="text-lg font-semibold text-light-accent">Professional Summary</h3>
+          <p>
+            As an IT Service Analyst with a keen focus on cloud and cybersecurity, I bring a robust and specialized skill set, continuously driving significant enhancements in security posture and operational efficiency. I've consistently achieved results like a 40% reduction in security incidents through NIST CSF implementation and a 25% decrease in phishing risk via targeted awareness training.
+          </p>
+        </div>
+
+        <!-- Certifications -->
+        <div class="space-y-2 mb-6">
+          <h3 class="text-lg font-semibold text-light-accent">Certifications</h3>
+          <ul class="list-disc list-inside space-y-0.5">
+            <li>Microsoft Azure Fundamentals (AZ-900)</li>
+            <li>ISC² Certified in Cybersecurity (CC)</li>
+            <li>CompTIA Security+</li>
+          </ul>
+        </div>
+
+        <!-- Work Experience -->
+        <div class="space-y-4 mb-6">
+          <h3 class="text-lg font-semibold text-light-accent">Work Experience</h3>
+
+          <div>
+            <h4 class="font-semibold text-light-text-dark">IT & Security Administrator</h4>
+            <p class="text-xxs text-light-text-light mb-1">
+              NCCJ of the Triad, Greensboro, NC | 12/2023 – Present
+            </p>
+            <ul class="list-disc list-inside space-y-0.5">
+              <li>Leveraged NIST CSF 2.0 to reduce incident volume by 40% within 12 months.</li>
+              <li>Launched phishing and security awareness training, cutting click rates by 25%.</li>
+              <li>Led network infrastructure upgrade, reducing downtime by 80 hours weekly.</li>
+              <li>Achieved 100% endpoint patch coverage through automation.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-semibold text-light-text-dark">IT Service Analyst</h4>
+            <p class="text-xxs text-light-text-light mb-1">
+              Allstate, Winston-Salem, NC | 09/2022 – Present
+            </p>
+            <ul class="list-disc list-inside space-y-0.5">
+              <li>Resolved 1400+ complex incidents, maintaining 84% SLA.</li>
+              <li>Built self-service guides and PowerShell scripts, boosting efficiency by 20%.</li>
+              <li>Deployed CrowdStrike Falcon sensors and configured firewall exceptions.</li>
+              <li>Mentored peers in Splunk, QRadar, CrowdStrike, and Defender.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-semibold text-light-text-dark">E-Commerce Account Coordinator</h4>
+            <p class="text-xxs text-light-text-light mb-1">
+              Hooker Furnishings, High Point, NC | 12/2019 – 10/2021
+            </p>
+            <ul class="list-disc list-inside space-y-0.5">
+              <li>Generated $25M in revenue via data-driven Wayfair campaigns.</li>
+              <li>Improved product data compliance 75%, halving support tickets.</li>
+            </ul>
+          </div>
+
+          <p class="text-xxs text-light-text-light italic">
+            Earlier sales leadership roles available upon request.
+          </p>
+        </div>
+
+        <!-- Education -->
+        <div class="space-y-2 mb-6">
+          <h3 class="text-lg font-semibold text-light-accent">Education</h3>
+          <p class="text-xxs text-light-text-light">
+            Bachelor of Digital Communication Studies – University of North Carolina at Greensboro
+          </p>
+        </div>
+
+        <!-- Competencies -->
+        <div class="space-y-2 mb-6">
+          <h3 class="text-lg font-semibold text-light-accent">Competencies</h3>
+          <ul class="list-disc list-inside space-y-0.5">
+            <li>Incident Response, EDR, SIEM (Splunk), IDS, Log Analysis</li>
+            <li>AWS (EC2, S3, VPC, CloudWatch), Linux, Azure, VMware, TCP/IP</li>
+            <li>Entra ID, PowerShell, Python, GitHub Actions, Intune, NIST CSF 2.0</li>
+          </ul>
+        </div>
+
+        <!-- Download Resume -->
+        <div class="text-center">
+          <a
+            href="https://kevindawson-resume-bucket.s3.amazonaws.com/Assets/kevin_dawson_resume.docx"
+            target="_blank"
+            class="inline-block bg-light-accent text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-600 shadow-md text-sm"
+          >
+            <i class="fas fa-download mr-2"></i>Download Resume (DOCX)
+          </a>
+        </div>
       </section>
 
       <!-- Right Column: Projects -->
@@ -120,13 +217,12 @@
           Projects
         </h2>
         <div class="space-y-4">
-          <!-- New Security Findings entry -->
           <div class="p-4 border border-light-border rounded-lg hover:shadow-md transition">
             <h3 class="text-sm font-semibold text-light-text-dark mb-1">
               Security Findings
             </h3>
             <p class="mb-2">
-              Interactive infographic displaying GuardDuty findings, attack patterns, and key takeaways from my cloud honeypot home lab.
+              Interactive infographic displaying GuardDuty findings, attack patterns, and key takeaways from my cloud honeypot lab.
             </p>
             <a
               href="security_infographic.html"
@@ -136,8 +232,6 @@
               View Findings →
             </a>
           </div>
-
-          <!-- AWS SOC Lab Terraform -->
           <div class="p-4 border border-light-border rounded-lg hover:shadow-md transition">
             <h3 class="text-sm font-semibold text-light-text-dark mb-1">
               AWS SOC Lab Terraform
@@ -153,14 +247,12 @@
               View Repo →
             </a>
           </div>
-
-          <!-- AWS SOC Lab -->
           <div class="p-4 border border-light-border rounded-lg hover:shadow-md transition">
             <h3 class="text-sm font-semibold text-light-text-dark mb-1">
               AWS SOC Lab
             </h3>
             <p class="mb-2">
-              AWS Security Operations Center (SOC) lab featuring EC2 honeypots, CloudWatch dashboards, VPC Flow Logs, and GuardDuty integration.
+              AWS-based Security Operations Center (SOC) lab featuring EC2 instances running Dionaea and Cowrie honeypots on Ubuntu, structured VPCs with public and private subnets, IAM role management, AWS Systems Manager (SSM), CloudWatch agent integration, CloudTrail logging, VPC Flow Logs for network traffic monitoring, custom dashboard creation, and CloudWatch Log Insights analytics for security event analysis.
             </p>
             <a
               href="https://github.com/kevindawsongso/aws-soc-lab"
@@ -170,9 +262,7 @@
               View Repo →
             </a>
           </div>
-
-          <!-- Cloud Resume Challenge -->
-          <div class="p-4 border border-light-border rounded-lg hover:shadow-md transition">
+          <div class="p-4 border border-light-border rounded-lg hover:shadow-md transition">          
             <h3 class="text-sm font-semibold text-light-text-dark mb-1">
               Cloud Resume Challenge
             </h3>
@@ -202,7 +292,46 @@
     </div>
   </main>
 
-  <!-- Footer & Visitor Counter Script (unchanged) -->
+  <!-- Footer & Visitor Counter Script (original) -->
+  <footer class="flex flex-col items-center justify-center p-6 md:p-8 text-light-text-light text-xs">
+    <p>&copy; 2025 Kevin Dawson. All rights reserved.</p>
+  </footer>
+  <script>
+    const visitorApiUrl = 'https://fi0znmqi2i.execute-api.us-east-1.amazonaws.com/Prod/visitors';
 
+    fetch(visitorApiUrl)
+      .then(response => {
+        if (!response.ok) {
+          return response.text().then(text => {
+            console.error('API Response Error Text:', text);
+            throw new Error('Network response was not ok: ' + response.status + ' ' + response.statusText);
+          });
+        }
+        return response.json();
+      })
+      .then(data => {
+        let visitorCount;
+        if (typeof data.count !== 'undefined') {
+          visitorCount = data.count;
+        } else if (typeof data.body !== 'undefined') {
+          try {
+            const bodyData = JSON.parse(data.body);
+            visitorCount = bodyData.count;
+          } catch {
+            visitorCount = parseInt(data.body, 10);
+          }
+        } else if (typeof data === 'number') {
+          visitorCount = data;
+        } else {
+          console.error('Visitor count not found in expected format:', data);
+          visitorCount = 'N/A';
+        }
+        document.getElementById('visitor-count').textContent = visitorCount;
+      })
+      .catch(error => {
+        console.error('There has been a problem with your fetch operation:', error.message);
+        document.getElementById('visitor-count').textContent = 'Error';
+      });
+  </script>
 </body>
 </html>
