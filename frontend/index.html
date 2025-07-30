@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kevin Dawson – Home & Resume</title>
+  <title>Kevin Dawson – Cloud & Security Portfolio</title>
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -68,7 +68,7 @@
         Kevin Dawson
       </h1>
       <p class="text-sm font-light text-light-text-medium mb-4">
-        IT Service Analyst at Allstate
+        IT & Security Administrator | Cloud & Endpoint Security
       </p>
       <p class="text-lg font-semibold text-light-text-medium mb-4">
         IT | Cyber Security | Cloud
@@ -116,7 +116,9 @@
         <div class="space-y-2 mb-6">
           <h3 class="text-lg font-semibold text-light-accent">Professional Summary</h3>
           <p>
-            As an IT Service Analyst with a keen focus on cloud and cybersecurity, I bring a robust and specialized skill set, continuously driving significant enhancements in security posture and operational efficiency. I've consistently achieved results like a 40% reduction in security incidents through NIST CSF implementation and a 25% decrease in phishing risk via targeted awareness training.
+            Security-focused IT professional with hands-on experience implementing identity, endpoint, and cloud governance controls across Microsoft 365, Azure, and AWS environments. Proven success enabling Conditional Access, enforcing 2FA, driving Intune compliance, and deploying Microsoft Defender for Endpoint with real-time telemetry and incident response follow-through. Skilled in triaging threats, performing root cause analysis, and aligning systems to PCI-DSS, NIST, and ISO standards.
+            <br><br>
+            Designed and operated an AWS-based SOC lab that captured live malicious traffic—including SMB exploits and brute-force attacks—via honeypots and cloud-native detection tools such as GuardDuty, VPC Flow Logs, and CloudWatch. Integrated Splunk, Terraform, and Security Hub for log aggregation and visualization. Known for collaboration skills, building transparent governance frameworks, and delivering cross-functional security projects in both enterprise and nonprofit environments.
           </p>
         </div>
 
@@ -124,9 +126,11 @@
         <div class="space-y-2 mb-6">
           <h3 class="text-lg font-semibold text-light-accent">Certifications</h3>
           <ul class="list-disc list-inside space-y-0.5">
-            <li>Microsoft Azure Fundamentals (AZ-900)</li>
-            <li>ISC² Certified in Cybersecurity (CC)</li>
-            <li>CompTIA Security+</li>
+            <li>CompTIA CySA+ (In Progress)</li>
+            <li>Microsoft Azure Fundamentals (AZ-900) – May 2024</li>
+            <li>ISC² Certified in Cybersecurity (CC) – Feb 2024</li>
+            <li>CompTIA Security+ – Dec 2023</li>
+            <li>CompTIA A+ – Mar 2023</li>
           </ul>
         </div>
 
@@ -140,10 +144,12 @@
               NCCJ of the Triad, Greensboro, NC | 12/2023 – Present
             </p>
             <ul class="list-disc list-inside space-y-0.5">
-              <li>Leveraged NIST CSF 2.0 to reduce incident volume by 40% within 12 months.</li>
-              <li>Launched phishing and security awareness training, cutting click rates by 25%.</li>
-              <li>Led network infrastructure upgrade, reducing downtime by 80 hours weekly.</li>
-              <li>Achieved 100% endpoint patch coverage through automation.</li>
+              <li>Onboarded Windows devices to Defender for Endpoint and enabled Threat & Vulnerability Management dashboards.</li>
+              <li>Purged 182 dormant Entra ID guest accounts and removed stale credentials, cutting attack surface by 35%.</li>
+              <li>Blocked non-U.S. logins via Conditional Access and disabled legacy protocols; enforced tenant-wide 2FA.</li>
+              <li>Eliminated 12 unmanaged/BYOD devices from Intune to improve compliance and reduce risk.</li>
+              <li>Built SharePoint security tracker for 20+ initiatives and migrated leaver data to a governed archive.</li>
+              <li>Reduced phishing risk by 25% with a tiered training program; launched internal IT portal and self-help guides.</li>
             </ul>
           </div>
 
@@ -153,10 +159,11 @@
               Allstate, Winston-Salem, NC | 09/2022 – Present
             </p>
             <ul class="list-disc list-inside space-y-0.5">
-              <li>Resolved 1400+ complex incidents, maintaining 84% SLA.</li>
-              <li>Built self-service guides and PowerShell scripts, boosting efficiency by 20%.</li>
-              <li>Deployed CrowdStrike Falcon sensors and configured firewall exceptions.</li>
-              <li>Mentored peers in Splunk, QRadar, CrowdStrike, and Defender.</li>
+              <li>Resolved 1400+ support escalations with 84% SLA; automated triage with log parsing.</li>
+              <li>Cut endpoint exposure 40% by deploying CrowdStrike Falcon Sensors and hardening OS builds.</li>
+              <li>Spearheaded PCI-DSS compliance upgrades for 100+ endpoints and standardized EOL workflows.</li>
+              <li>Administered 2FA for 60,000+ users and created rollout playbooks.</li>
+              <li>Founded mentorship program covering Splunk, QRadar, CrowdStrike, and Proofpoint.</li>
             </ul>
           </div>
 
@@ -188,9 +195,9 @@
         <div class="space-y-2 mb-6">
           <h3 class="text-lg font-semibold text-light-accent">Competencies</h3>
           <ul class="list-disc list-inside space-y-0.5">
-            <li>Incident Response, EDR, SIEM (Splunk), IDS, Log Analysis</li>
-            <li>AWS (EC2, S3, VPC, CloudWatch), Linux, Azure, VMware, TCP/IP</li>
-            <li>Entra ID, PowerShell, Python, GitHub Actions, Intune, NIST CSF 2.0</li>
+            <li>Security Ops: Incident Response, SIEM (Splunk), EDR, IDS, Threat Intel, Root Cause Analysis</li>
+            <li>Cloud & Infra: AWS (EC2, VPC, CloudWatch), Azure, Linux, Intune, Terraform, VMware</li>
+            <li>Governance & Tools: IAM, Entra ID, NIST CSF, PCI-DSS, PowerShell, Python, GitHub Actions</li>
           </ul>
         </div>
 
@@ -237,7 +244,7 @@
               AWS SOC Lab Terraform
             </h3>
             <p class="mb-2">
-              Terraform modules and configuration for deploying the AWS Honey Pot Lab environment, including VPC setup, security groups, and EC2 instance provisioning.
+              Terraform modules for deploying AWS SOC infrastructure: includes EC2 provisioning, subnet segmentation, security groups, and CloudWatch dashboard automation.
             </p>
             <a
               href="https://github.com/kevindawsongso/aws-soc-lab-terraform"
@@ -252,7 +259,7 @@
               AWS SOC Lab
             </h3>
             <p class="mb-2">
-              AWS-based Security Operations Center (SOC) lab featuring EC2 instances running Dionaea and Cowrie honeypots on Ubuntu, structured VPCs with public and private subnets, IAM role management, AWS Systems Manager (SSM), CloudWatch agent integration, CloudTrail logging, VPC Flow Logs for network traffic monitoring, custom dashboard creation, and CloudWatch Log Insights analytics for security event analysis.
+              AWS-based Security Operations Center (SOC) lab simulating real-world attacks using Dionaea and Cowrie honeypots. Includes structured VPCs, GuardDuty, Security Hub, CloudTrail, VPC Flow Logs, and CloudWatch integration with real-time telemetry piped to Splunk for visualization and triage.
             </p>
             <a
               href="https://github.com/kevindawsongso/aws-soc-lab"
@@ -267,7 +274,7 @@
               Cloud Resume Challenge
             </h3>
             <p class="mb-2">
-              Serverless portfolio site deployed on AWS S3, CloudFront, and Lambda with CI/CD.
+              Static portfolio site deployed on AWS (S3, CloudFront, Route 53) with CI/CD via GitHub Actions. Serverless API integration with Lambda + DynamoDB for tracking visitor analytics.
             </p>
             <a
               href="https://github.com/kevindawsongso/cloud-resume-challenge"
